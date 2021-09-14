@@ -7,14 +7,20 @@ const schema = new mongoose.Schema({
     type: String,
     trim: true
   },
+
   email: {
     type: String,
     required: true,
     lowercase: true,
     trim: true
   },
+
   passwordHashAndSalt: {
     type: String
+  },
+
+  age: {
+    type: Number
   }
 });
 

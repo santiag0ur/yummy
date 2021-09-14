@@ -1,6 +1,7 @@
 'use strict';
+// jshint esversion:10
 
-const User = require('./../models/user');
+const User = require('../models/user');
 
 module.exports = (req, res, next) => {
   const userId = req.session.userId;

@@ -1,4 +1,5 @@
 'use strict';
+// jshint esversion:10
 
 const path = require('path');
 const express = require('express');
@@ -8,15 +9,17 @@ const expressSession = require('express-session');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const serveFavicon = require('serve-favicon');
+const hbs = require('hbs');
 const basicAuthenticationDeserializer = require('./middleware/basic-authentication-deserializer.js');
 const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js');
 const baseRouter = require('./routes/home/index');
 const authenticationRouter = require('./routes/authentication/authentication');
-
 const app = express();
 
 app.set('views', path.join(__dirname, 'views'));
+
 app.set('view engine', 'hbs');
+hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
 app.use(serveFavicon(path.join(__dirname, 'public/images', 'favicon.ico')));
 app.use(
