@@ -1,10 +1,12 @@
-'use strict';
-
 const mongoose = require('mongoose');
 
 const restaurantSchema = new mongoose.Schema(
   {
     title: {
+      type: String,
+      required: true
+    },
+    image: {
       type: String,
       required: true
     },
@@ -17,10 +19,12 @@ const restaurantSchema = new mongoose.Schema(
       type: String,
       enum: [
         'breakfast',
-        'main_course',
-        'soup',
-        'snack',
-        'drink',
+        'cafe',
+        'hamburger',
+        'pizza',
+        'asian',
+        'mexican',
+        'restaurant',
         'dessert',
         'other'
       ],
@@ -32,6 +36,6 @@ const restaurantSchema = new mongoose.Schema(
   { timestamps: { createdAt: 'publishingDate', updatedAt: 'editingDate' } }
 );
 
-const Restaurant = mongoose.model('Restaurant, restaurantSchema');
+const Restaurant = mongoose.model('Restaurant', restaurantSchema);
 
 module.exports = Restaurant;
